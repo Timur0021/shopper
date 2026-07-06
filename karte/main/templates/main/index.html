@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Вітаємо!</h1>
+    <div class="categories-wrapper">
+        <div class="categories-grid">
+            {% for category in categories %}
+                <div class="category-card">
+                    <div class="category-image">
+                        {% if category.image %}
+                            <img src="{{ category.image.url }}" alt="{{ category.title }}">
+                        {% else %}
+                            <div class="placeholder">📁</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="category-title">
+                        {{ category.title }}
+                    </div>
+                </div>
+            {% empty %}
+                <div class="category-empty">Категорій немає</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
